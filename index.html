@@ -27,6 +27,10 @@
             position: relative;
         }
 
+        h2 {
+            color: #8bb4d8;
+        }
+
         /* Navigation */
         nav {
             position: fixed;
@@ -391,6 +395,7 @@
             border: 1px solid rgba(0, 162, 255, 0.2);
             cursor: pointer;
             position: relative;
+            min-height:520px;
         }
 
         .project-card::before {
@@ -441,6 +446,13 @@
             font-size: 24px;
             margin-bottom: 15px;
             color: #00d4ff;
+        }
+
+        .project-content h3.mobileApp {
+            display: block;    
+            margin-top: -62px;
+            margin-left: 65px;
+            margin-bottom: 47px;
         }
 
         .project-content p {
@@ -684,6 +696,10 @@
             transform: rotate(-45deg) translate(7px, -7px);
         }
 
+        .appIcon {
+            border-radius: 12px;border-width: 0;box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 1px 3px 1px rgba(60, 64, 67, .15);height: 56px;width: 56px;
+        }
+
         /* Responsive */
 
         @media (max-width: 768px) {
@@ -854,6 +870,7 @@
             <div class="profile-photo">
                 <img src="Soven.jpeg" alt="Soven Palit">
             </div>
+            <h2>Soven Palit</h2>
             <h1>Software Engineer</h1>
             <p>Crafting digital experiences with code & design</p>
             <a href="#projects" class="cta-button">View My Work</a>
@@ -877,7 +894,8 @@
             <span class="skill-tag"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0,0,256,256">
 <g fill="#00d4ff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M25,2c-0.71484,0 -1.42969,0.17969 -2.06641,0.53906l-16.84375,9.46484c-1.28906,0.72266 -2.08984,2.07813 -2.08984,3.53125v18.92969c0,1.45313 0.80078,2.80859 2.08984,3.53125l16.84375,9.46484c0.63672,0.35938 1.35156,0.53906 2.06641,0.53906c0.71484,0 1.42969,-0.17969 2.06641,-0.53906l16.84375,-9.46094c1.28906,-0.72656 2.08984,-2.08203 2.08984,-3.53516v-18.92969c0,-1.45312 -0.80078,-2.80859 -2.08984,-3.53125l-16.84375,-9.46484c-0.63672,-0.35937 -1.35156,-0.53906 -2.06641,-0.53906zM25,13c3.78125,0 7.27734,1.75391 9.54297,4.73828l-4.38281,2.53906c-1.31641,-1.44141 -3.1875,-2.27734 -5.16016,-2.27734c-3.85937,0 -7,3.14063 -7,7c0,3.85938 3.14063,7 7,7c1.97266,0 3.84375,-0.83594 5.16016,-2.27734l4.38281,2.53906c-2.26562,2.98438 -5.76172,4.73828 -9.54297,4.73828c-6.61719,0 -12,-5.38281 -12,-12c0,-6.61719 5.38281,-12 12,-12zM35,20h2v2h2v-2h2v2h2v2h-2v2h2v2h-2v2h-2v-2h-2v2h-2v-2h-2v-2h2v-2h-2v-2h2zM37,24v2h2v-2z"></path></g></g>
 </svg> C#</span>
-            <span class="skill-tag"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 640 640"><g fill="#00d4ff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M442.6 142.9C439.8 142.8 437 142.7 434.1 142.7L170 142.7L313.2 70.7C320.6 66.3 332 64 343.6 64C357.1 64 373 73.2 380.6 80.8L442.6 142.8L442.6 142.9zM171.3 160.5L434.1 160.5C450.1 160.5 459.5 161.9 469.5 169.8L576 276.2L576 485L496.7 485.7L171.3 160.5zM160.5 437L160.5 174.8L484.3 498.6L485 576L272.8 576L174.7 477.8C163.4 466.5 160.5 462.5 160.5 437zM142.7 169.3L142.7 437C142.7 440.3 142.8 443.3 142.9 446.1L80.9 384.1C70.5 373.3 64 358.3 64 343.6C64 336.8 67.9 326.1 70.7 320L142.7 169.3z"/></g></svg> Dart</span>
+            
+<span class="skill-tag"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 640 640"><g fill="#00d4ff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M442.6 142.9C439.8 142.8 437 142.7 434.1 142.7L170 142.7L313.2 70.7C320.6 66.3 332 64 343.6 64C357.1 64 373 73.2 380.6 80.8L442.6 142.8L442.6 142.9zM171.3 160.5L434.1 160.5C450.1 160.5 459.5 161.9 469.5 169.8L576 276.2L576 485L496.7 485.7L171.3 160.5zM160.5 437L160.5 174.8L484.3 498.6L485 576L272.8 576L174.7 477.8C163.4 466.5 160.5 462.5 160.5 437zM142.7 169.3L142.7 437C142.7 440.3 142.8 443.3 142.9 446.1L80.9 384.1C70.5 373.3 64 358.3 64 343.6C64 336.8 67.9 326.1 70.7 320L142.7 169.3z"/></g></svg> Dart</span>
             <span class="skill-tag"><i class="fab fa-js"></i> JavaScript</span>
             <span class="skill-tag"><span class="json-skill">{:}</span> JSON</span>
             <span class="skill-tag"><i class="fas fa-file-code"></i> XML</span>
@@ -889,10 +907,10 @@
     <div class="skills-category">
         <h3>Frameworks & Libraries</h3>
         <div class="skills">
-            <span class="skill-tag"><i class="fas fa-server"></i> ASP.NET</span>
-            <span class="skill-tag"><i class="fas fa-network-wired"></i> ASP.NET Web API</span>
-            <span class="skill-tag"><i class="fas fa-database"></i> Entity Framework</span>
-            <span class="skill-tag"><i class="fab fa-js-square"></i> jQuery</span>
+            <span class="skill-tag"><i class="fa-brands fa-microsoft"></i> ASP.NET</span>
+            <span class="skill-tag"><i class="fa-brands fa-microsoft"></i> ASP.NET Web API</span>
+            <span class="skill-tag"><i class="fa-brands fa-microsoft"></i> Entity Framework</span>
+            <span class="skill-tag"><img src="jQuery.svg"/> jQuery</span>
             <span class="skill-tag"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 640 640"><g fill="#00d4ff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M525.5 300.3L387.7 438.1L525.5 576L368 576C331.9 539.9 285.9 493.9 230.1 438.1L368 300.3L525.5 300.3zM368 64L112 320L190.8 398.8L525.5 64L368 64z"/></g></svg> Flutter</span>
             <span class="skill-tag"><img src="icon-titanium-red.svg"/> Titanium</span>
         </div>
@@ -901,7 +919,7 @@
     <div class="skills-category">
         <h3>Databases</h3>
         <div class="skills">
-            <span class="skill-tag"><i class="fas fa-database"></i> MS SQL Server</span>
+            <span class="skill-tag"><i class="fa-brands fa-microsoft"></i> MS SQL Server</span>
             <span class="skill-tag"><img src="SQLite.svg"/> SQLite</span>
         </div>
     </div>
@@ -910,7 +928,8 @@
         <h3>Tools & Technologies</h3>
         <div class="skills">
             <span class="skill-tag"><img src="VisualStudio.svg"/> Visual Studio</span>
-            <span class="skill-tag"><img src="VSCode.svg"/> VS Code</span>
+            <span class="skill-tag"><img src="VSCode.svg"/> VS Code</span>            
+            <span class="skill-tag"><img src="firebase.svg"/> Firebase</span>
             <span class="skill-tag"><img src="Postman.svg"/> Postman</span>
             <span class="skill-tag"><i class="fab fa-git-alt"></i> Git</span>
             <span class="skill-tag"><img src="azure-repos.svg"/> Azure Repos</span>
@@ -931,19 +950,44 @@
         <div class="projects-parallax" id="projects-parallax"></div>
         <h2>Featured Projects</h2>
         <div class="projects-grid">
+            <a href="https://app.reliableplant.com" target="_blank" style="text-decoration: none;">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="NEMS_Blue.png"/>
+                    </div>
+                    <div class="project-content">
+                        <h3>Noria Event Management System</h3>
+                        <p>The administrative brains behind Noria's events.</p>
+                        <div class="project-tags">                            
+                            <span class="tag">C#</span>    
+                            <span class="tag">ASP.NET</span>                     
+                            <span class="tag">.NET Web API</span>                     
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">jQuery</span>
+                            <span class="tag">HTML5</span>
+                            <span class="tag">CSS3</span>
+                            <span class="tag">Entity Framework</span>
+                            <span class="tag">MS SQL Server</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            
             <a href="https://apps.apple.com/us/app/lubepm/id1466979011" target="_blank" style="text-decoration: none;">
                 <div class="project-card">
                     <div class="project-image">
                         <img src="lubepm.webp"/>
                     </div>
-                    <div class="project-content">
-                        <h3>LubePM</h3>
+                    <div class="project-content">                       
+                        <img src="lubepm-icon.webp" class="appIcon" />
+                        <h3 class="mobileApp">LubePM</h3>                       
                         <p>LubePM is the Lubrication Management System for your industrial facility.</p>
                         <div class="project-tags">
-                            <span class="tag">Dart / Flutter</span>
-                            <span class="tag">C# / .NET Web API</span>                        
-                        </div>
-                        <div class="project-tags">
+                            <span class="tag">Dart</span>
+                            <span class="tag">Flutter</span>
+                            <span class="tag">C#</span>               
+                            <span class="tag">.NET Web API</span>     
+                            <span class="tag">SQLite</span>                          
                             <span class="tag">iOS</span>
                             <span class="tag">Android</span>
                         </div>
@@ -957,12 +1001,13 @@
                         <img src="noria-academy.webp"/>
                     </div>
                     <div class="project-content">
-                        <h3>Noria Academy</h3>
+                        <img src="noria-academy-icon.webp" class="appIcon" />
+                        <h3 class="mobileApp">Noria Academy</h3>
                         <p>Noria's certification exam prep app that extends learning beyond the classroom.</p>
                         <div class="project-tags">
-                            <span class="tag">Dart / Flutter</span>
-                        </div>
-                        <div class="project-tags">
+                            <span class="tag">Dart</span>
+                            <span class="tag">Flutter</span>
+                            <span class="tag">SQLite</span>                         
                             <span class="tag">iOS</span>
                             <span class="tag">Android</span>
                         </div>
@@ -976,13 +1021,14 @@
                         <img src="rp25.webp"/>
                     </div>
                     <div class="project-content">
-                        <h3>Reliable Plant 2025</h3>
+                        <img src="rp25-icon.webp" class="appIcon" />
+                        <h3 class="mobileApp">Reliable Plant 2025</h3>
                         <p>Noria's guide to the annual Reliable Plant Conference and Exhibition.</p>
                         <div class="project-tags">
-                            <span class="tag">Dart / Flutter</span>
+                            <span class="tag">Dart</span>
+                            <span class="tag">Flutter</span>
                             <span class="tag">Firebase</span>
-                        </div>
-                        <div class="project-tags">
+                            <span class="tag">SQLite</span>                        
                             <span class="tag">iOS</span>
                             <span class="tag">Android</span>
                         </div>
