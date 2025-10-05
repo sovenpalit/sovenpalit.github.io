@@ -9,6 +9,12 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        }
+
+        html {
+            overflow-x: hidden;
+            width: 100%;
         }
 
         body {
@@ -16,6 +22,9 @@
             background: #0a0e27;
             color: #fff;
             overflow-x: hidden;
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
         }
 
         /* Navigation */
@@ -538,6 +547,12 @@
             transform: scale(1.1);
         }
 
+        .hero, .about, .projects, .contact {
+            width: 100%;
+            max-width: 100vw;
+            /*overflow-x: hidden;*/
+        }
+
         /* Footer */
         footer {
             padding: 30px;
@@ -779,6 +794,15 @@
             .json-skill {
                 font-size:14px;
             }
+
+            .parallax-layer, .parallax-shape, .about-parallax, .projects-parallax,.contact-parallax {
+                display: none; /* Disable parallax on mobile to prevent flickering */
+            }
+            
+            /* Disable transform-based animations on mobile */
+            .hero-content, #parallax-layer-1 {
+                transform: none !important;
+            }
         }
 
     </style>
@@ -983,15 +1007,11 @@
     </footer>
 
     <script>
+        // Disable parallax effects on mobile/iOS
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        
         // Navbar scroll effect
         const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
 
         // Enhanced parallax effect with multiple layers
         const parallaxLayer1 = document.getElementById('parallax-layer-1');
@@ -1000,37 +1020,45 @@
         const projectsParallax = document.getElementById('projects-parallax');
         const contactParallax = document.getElementById('contact-parallax');
 
+
         window.addEventListener('scroll', () => {
+
             const scrolled = window.pageYOffset;
-            
-            // Hero parallax - multiple speeds for depth
-            if (parallaxLayer1) {
-                parallaxLayer1.style.transform = `translateY(${scrolled * 0.3}px)`;
-            }
-            if (heroContent) {
-                heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
-                heroContent.style.opacity = 1 - (scrolled / 600);
+    
+            // Navbar scroll
+            if (scrolled > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
             }
             
-            // About section parallax
-            if (aboutParallax) {
-                const aboutTop = document.getElementById('about').offsetTop;
-                const aboutScroll = scrolled - aboutTop;
-                aboutParallax.style.transform = `translateY(${aboutScroll * 0.2}px) translateX(${aboutScroll * 0.1}px) rotate(${aboutScroll * 0.05}deg)`;
-            }
-            
-            // Projects section parallax
-            if (projectsParallax) {
-                const projectsTop = document.getElementById('projects').offsetTop;
-                const projectsScroll = scrolled - projectsTop;
-                projectsParallax.style.transform = `translateY(${projectsScroll * 0.15}px) translateX(${projectsScroll * -0.1}px)`;
-            }
-            
-            // Contact section parallax
-            if (contactParallax) {
-                const contactTop = document.getElementById('contact').offsetTop;
-                const contactScroll = scrolled - contactTop;
-                contactParallax.style.transform = `translate(-50%, -50%) scale(${1 + (contactScroll * 0.0005)})`;
+            // Only run parallax on desktop
+            if (!isMobile) {
+                if (parallaxLayer1) {
+                    parallaxLayer1.style.transform = `translateY(${scrolled * 0.3}px)`;
+                }
+                if (heroContent) {
+                    heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
+                    heroContent.style.opacity = 1 - (scrolled / 600);
+                }
+                
+                if (aboutParallax) {
+                    const aboutTop = document.getElementById('about').offsetTop;
+                    const aboutScroll = scrolled - aboutTop;
+                    aboutParallax.style.transform = `translateY(${aboutScroll * 0.2}px) translateX(${aboutScroll * 0.1}px) rotate(${aboutScroll * 0.05}deg)`;
+                }
+                
+                if (projectsParallax) {
+                    const projectsTop = document.getElementById('projects').offsetTop;
+                    const projectsScroll = scrolled - projectsTop;
+                    projectsParallax.style.transform = `translateY(${projectsScroll * 0.15}px) translateX(${projectsScroll * -0.1}px)`;
+                }
+                
+                if (contactParallax) {
+                    const contactTop = document.getElementById('contact').offsetTop;
+                    const contactScroll = scrolled - contactTop;
+                    contactParallax.style.transform = `translate(-50%, -50%) scale(${1 + (contactScroll * 0.0005)})`;
+                }
             }
         });
 
@@ -1046,21 +1074,23 @@
             particlesContainer.appendChild(particle);
         }
 
-        // Mouse move parallax effect
-        document.addEventListener('mousemove', (e) => {
-            const mouseX = e.clientX / window.innerWidth;
-            const mouseY = e.clientY / window.innerHeight;
-            
-            if (parallaxLayer1 && window.scrollY < window.innerHeight) {
-                const shapes = parallaxLayer1.querySelectorAll('.parallax-shape');
-                shapes.forEach((shape, index) => {
-                    const speed = (index + 1) * 10;
-                    const x = (mouseX - 0.5) * speed;
-                    const y = (mouseY - 0.5) * speed;
-                    shape.style.transform += ` translate(${x}px, ${y}px)`;
-                });
-            }
-        });
+        if (!isMobile) {
+            // Mouse move parallax effect
+            document.addEventListener('mousemove', (e) => {
+                const mouseX = e.clientX / window.innerWidth;
+                const mouseY = e.clientY / window.innerHeight;
+                
+                if (parallaxLayer1 && window.scrollY < window.innerHeight) {
+                    const shapes = parallaxLayer1.querySelectorAll('.parallax-shape');
+                    shapes.forEach((shape, index) => {
+                        const speed = (index + 1) * 10;
+                        const x = (mouseX - 0.5) * speed;
+                        const y = (mouseY - 0.5) * speed;
+                        shape.style.transform += ` translate(${x}px, ${y}px)`;
+                    });
+                }
+            });
+        }
 
         // Reveal on scroll
         function reveal() {
