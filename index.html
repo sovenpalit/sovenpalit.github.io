@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Soven Palit - Portfolio</title>
     <style>
         * {
@@ -149,8 +149,8 @@
         }
 
         .profile-photo {
-            width: 200px;
-            height: 200px;
+            width: 300px;
+            height: 300px;
             border-radius: 50%;
             margin-bottom: 30px;
             border: 4px solid rgba(0, 162, 255, 0.5);
@@ -312,9 +312,14 @@
         }
 
         .skill-tag i {
-            font-size: 22px;
+            font-size: 26px;
             color: #00d4ff;
         }
+
+        .skill-tag svg, .skill-tag img {
+                width:26px;
+                height:26px;
+            }
 
         .skill-tag:hover {
             background: rgba(0, 162, 255, 0.2);
@@ -322,28 +327,8 @@
             box-shadow: 0 5px 15px rgba(0, 162, 255, 0.2);
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .about-me {
-                margin-top:0px;
-            }
-            
-            .skills {
-                gap: 10px;
-            }
-
-            .skill-tag {
-                font-size: 12px;
-                padding: 8px 15px;
-            }
-
-            .skill-tag i {
-                font-size: 16px;
-            }
-
-            .skills-category h3 {
-                font-size: 20px;
-            }
+        .json-skill {
+            color:#00d4ff;font-size:18px;
         }
 
         /* Projects Section */
@@ -419,8 +404,8 @@
 
         .project-image {
             width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, #00a2ff 0%, #0066ff 100%);
+            /*height: 250px;
+            background: linear-gradient(135deg, #00a2ff 0%, #0066ff 100%);*/
             display: flex;
             align-items: center;
             justify-content: center;
@@ -461,6 +446,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
+            margin-bottom: 10px;
         }
 
         .tag {
@@ -658,10 +644,101 @@
             transform: translateY(0);
         }
 
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #00d4ff;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
         /* Responsive */
+
         @media (max-width: 768px) {
+            body {
+                overflow-x: hidden;
+            }
+
             .hero h1 {
-                font-size: 48px;
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+                padding: 0 20px;
+            }
+
+            .profile-photo {
+                width: 150px;
+                height: 150px;
+            }
+
+            nav {
+                padding: 15px 20px;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 250px;
+                height: calc(100vh - 70px);
+                background: rgba(10, 14, 39, 0.98);
+                flex-direction: column;
+                padding: 40px 20px;
+                gap: 30px;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 18px;
+                text-align: center;
+                padding: 10px;
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+
+            .about h2, .projects h2, .contact h2 {
+                font-size: 32px;
+            }
+
+            .about, .projects, .contact {
+                padding: 60px 20px;
+            }
+
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 16px;
             }
 
             .about-content {
@@ -670,23 +747,52 @@
 
             .projects-grid {
                 grid-template-columns: 1fr;
+                gap: 30px;
             }
 
-            nav {
-                padding: 20px;
+            .about-me {
+                margin-top:0px;
+            }
+            
+            .skills {
+                gap: 10px;
             }
 
-            .nav-links {
-                gap: 15px;
+            .skill-tag {
+                font-size: 12px;
+                padding: 8px 15px;
+            }
+
+            .skill-tag i {
+                font-size: 20px;
+            }
+
+            .skill-tag svg, .skill-tag img {
+                width:20px;
+                height:20px;
+            }
+
+            .skills-category h3 {
+                font-size: 20px;
+            }
+
+            .json-skill {
+                font-size:14px;
             }
         }
+
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <nav id="navbar">
         <div class="logo">Soven Palit</div>
-        <div class="nav-links">
+        <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-links" id="nav-links">
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
@@ -726,12 +832,12 @@
         <h3>Languages</h3>
         <div class="skills">
             
-            <span class="skill-tag"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="26" height="26" viewBox="0,0,256,256">
+            <span class="skill-tag"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0,0,256,256">
 <g fill="#00d4ff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M25,2c-0.71484,0 -1.42969,0.17969 -2.06641,0.53906l-16.84375,9.46484c-1.28906,0.72266 -2.08984,2.07813 -2.08984,3.53125v18.92969c0,1.45313 0.80078,2.80859 2.08984,3.53125l16.84375,9.46484c0.63672,0.35938 1.35156,0.53906 2.06641,0.53906c0.71484,0 1.42969,-0.17969 2.06641,-0.53906l16.84375,-9.46094c1.28906,-0.72656 2.08984,-2.08203 2.08984,-3.53516v-18.92969c0,-1.45312 -0.80078,-2.80859 -2.08984,-3.53125l-16.84375,-9.46484c-0.63672,-0.35937 -1.35156,-0.53906 -2.06641,-0.53906zM25,13c3.78125,0 7.27734,1.75391 9.54297,4.73828l-4.38281,2.53906c-1.31641,-1.44141 -3.1875,-2.27734 -5.16016,-2.27734c-3.85937,0 -7,3.14063 -7,7c0,3.85938 3.14063,7 7,7c1.97266,0 3.84375,-0.83594 5.16016,-2.27734l4.38281,2.53906c-2.26562,2.98438 -5.76172,4.73828 -9.54297,4.73828c-6.61719,0 -12,-5.38281 -12,-12c0,-6.61719 5.38281,-12 12,-12zM35,20h2v2h2v-2h2v2h2v2h-2v2h2v2h-2v2h-2v-2h-2v2h-2v-2h-2v-2h2v-2h-2v-2h2zM37,24v2h2v-2z"></path></g></g>
 </svg> C#</span>
-            <span class="skill-tag"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="26" height="26" viewBox="0 0 640 640"><g fill="#00d4ff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M442.6 142.9C439.8 142.8 437 142.7 434.1 142.7L170 142.7L313.2 70.7C320.6 66.3 332 64 343.6 64C357.1 64 373 73.2 380.6 80.8L442.6 142.8L442.6 142.9zM171.3 160.5L434.1 160.5C450.1 160.5 459.5 161.9 469.5 169.8L576 276.2L576 485L496.7 485.7L171.3 160.5zM160.5 437L160.5 174.8L484.3 498.6L485 576L272.8 576L174.7 477.8C163.4 466.5 160.5 462.5 160.5 437zM142.7 169.3L142.7 437C142.7 440.3 142.8 443.3 142.9 446.1L80.9 384.1C70.5 373.3 64 358.3 64 343.6C64 336.8 67.9 326.1 70.7 320L142.7 169.3z"/></g></svg> Dart</span>
+            <span class="skill-tag"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 640 640"><g fill="#00d4ff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M442.6 142.9C439.8 142.8 437 142.7 434.1 142.7L170 142.7L313.2 70.7C320.6 66.3 332 64 343.6 64C357.1 64 373 73.2 380.6 80.8L442.6 142.8L442.6 142.9zM171.3 160.5L434.1 160.5C450.1 160.5 459.5 161.9 469.5 169.8L576 276.2L576 485L496.7 485.7L171.3 160.5zM160.5 437L160.5 174.8L484.3 498.6L485 576L272.8 576L174.7 477.8C163.4 466.5 160.5 462.5 160.5 437zM142.7 169.3L142.7 437C142.7 440.3 142.8 443.3 142.9 446.1L80.9 384.1C70.5 373.3 64 358.3 64 343.6C64 336.8 67.9 326.1 70.7 320L142.7 169.3z"/></g></svg> Dart</span>
             <span class="skill-tag"><i class="fab fa-js"></i> JavaScript</span>
-            <span class="skill-tag"><span style="color:#00d4ff;font-size:18px;">{:}</span> JSON</span>
+            <span class="skill-tag"><span class="json-skill">{:}</span> JSON</span>
             <span class="skill-tag"><i class="fas fa-file-code"></i> XML</span>
             <span class="skill-tag"><i class="fab fa-html5"></i> HTML5</span>
             <span class="skill-tag"><i class="fab fa-css3-alt"></i> CSS3</span>
@@ -745,8 +851,8 @@
             <span class="skill-tag"><i class="fas fa-network-wired"></i> ASP.NET Web API</span>
             <span class="skill-tag"><i class="fas fa-database"></i> Entity Framework</span>
             <span class="skill-tag"><i class="fab fa-js-square"></i> jQuery</span>
-            <span class="skill-tag"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="26" height="26" viewBox="0 0 640 640"><g fill="#00d4ff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M525.5 300.3L387.7 438.1L525.5 576L368 576C331.9 539.9 285.9 493.9 230.1 438.1L368 300.3L525.5 300.3zM368 64L112 320L190.8 398.8L525.5 64L368 64z"/></g></svg> Flutter</span>
-            <span class="skill-tag"><img src="icon-titanium-red.svg" width="24px"/> Titanium</span>
+            <span class="skill-tag"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 640 640"><g fill="#00d4ff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M525.5 300.3L387.7 438.1L525.5 576L368 576C331.9 539.9 285.9 493.9 230.1 438.1L368 300.3L525.5 300.3zM368 64L112 320L190.8 398.8L525.5 64L368 64z"/></g></svg> Flutter</span>
+            <span class="skill-tag"><img src="icon-titanium-red.svg"/> Titanium</span>
         </div>
     </div>
 
@@ -754,19 +860,19 @@
         <h3>Databases</h3>
         <div class="skills">
             <span class="skill-tag"><i class="fas fa-database"></i> MS SQL Server</span>
-            <span class="skill-tag"><img src="SQLite.svg" width="22px"/> SQLite</span>
+            <span class="skill-tag"><img src="SQLite.svg"/> SQLite</span>
         </div>
     </div>
 
     <div class="skills-category">
         <h3>Tools & Technologies</h3>
         <div class="skills">
-            <span class="skill-tag"><img src="VisualStudio.svg" width="22px"/> Visual Studio</span>
-            <span class="skill-tag"><img src="VSCode.svg" width="22px"/> VS Code</span>
-            <span class="skill-tag"><img src="Postman.svg" width="24px"/> Postman</span>
+            <span class="skill-tag"><img src="VisualStudio.svg"/> Visual Studio</span>
+            <span class="skill-tag"><img src="VSCode.svg"/> VS Code</span>
+            <span class="skill-tag"><img src="Postman.svg"/> Postman</span>
             <span class="skill-tag"><i class="fab fa-git-alt"></i> Git</span>
-            <span class="skill-tag"><img src="azure-repos.svg" width="24px"/> Azure Repos</span>
-            <span class="skill-tag"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="26" height="26" viewBox="0 0 640 640"><g fill="#00d4ff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M260.4 249.8L260.4 201.2C260.4 197.1 261.9 194 265.5 192L363.3 135.7C376.6 128 392.5 124.4 408.9 124.4C470.3 124.4 509.3 172 509.3 222.7C509.3 226.3 509.3 230.4 508.8 234.5L407.3 175.1C401.2 171.5 395 171.5 388.9 175.1L260.4 249.8zM488.7 439.2L488.7 323C488.7 315.8 485.6 310.7 479.5 307.1L351 232.4L393 208.3C396.6 206.3 399.7 206.3 403.2 208.3L501 264.7C529.2 281.1 548.1 315.9 548.1 349.7C548.1 388.6 525.1 424.5 488.7 439.3L488.7 439.3zM230.2 336.8L188.2 312.2C184.6 310.2 183.1 307.1 183.1 303L183.1 190.4C183.1 135.6 225.1 94.1 281.9 94.1C303.4 94.1 323.4 101.3 340.3 114.1L239.4 172.5C233.3 176.1 230.2 181.2 230.2 188.4L230.2 336.9L230.2 336.9zM320.6 389L260.4 355.2L260.4 283.5L320.6 249.7L380.8 283.5L380.8 355.2L320.6 389zM359.3 544.7C337.8 544.7 317.8 537.5 300.9 524.7L401.8 466.3C407.9 462.7 411 457.6 411 450.4L411 301.9L453.5 326.5C457.1 328.5 458.6 331.6 458.6 335.7L458.6 448.3C458.6 503.1 416.1 544.6 359.3 544.6L359.3 544.6zM237.8 430.5L140.1 374.2C111.9 357.8 93 323 93 289.2C93 249.8 116.6 214.4 152.9 199.6L152.9 316.3C152.9 323.5 156 328.6 162.1 332.2L290.1 406.4L248.1 430.5C244.5 432.5 241.4 432.5 237.9 430.5zM232.2 514.5C174.3 514.5 131.8 471 131.8 417.2C131.8 413.1 132.3 409 132.8 404.9L233.7 463.3C239.8 466.9 246 466.9 252.1 463.3L380.6 389.1L380.6 437.7C380.6 441.8 379.1 444.9 375.5 446.9L277.7 503.2C264.4 510.9 248.5 514.5 232.1 514.5L232.1 514.5zM359.2 575.4C421.2 575.4 472.9 531.4 484.6 473C541.9 458.1 578.8 404.4 578.8 349.6C578.8 313.8 563.4 278.9 535.8 253.9C538.4 243.1 539.9 232.4 539.9 221.6C539.9 148.4 480.5 93.6 411.9 93.6C398.1 93.6 384.8 95.6 371.5 100.3C348.5 77.8 316.7 63.4 281.9 63.4C219.9 63.4 168.2 107.4 156.5 165.8C99.2 180.6 62.3 234.4 62.3 289.2C62.3 325 77.7 359.9 105.3 384.9C102.7 395.7 101.2 406.4 101.2 417.2C101.2 490.4 160.6 545.2 229.2 545.2C243 545.2 256.3 543.2 269.6 538.5C292.6 561 324.4 575.4 359.2 575.4z"/></g></svg> ChatGPT</span>
+            <span class="skill-tag"><img src="azure-repos.svg"/> Azure Repos</span>
+            <span class="skill-tag"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 640 640"><g fill="#00d4ff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M260.4 249.8L260.4 201.2C260.4 197.1 261.9 194 265.5 192L363.3 135.7C376.6 128 392.5 124.4 408.9 124.4C470.3 124.4 509.3 172 509.3 222.7C509.3 226.3 509.3 230.4 508.8 234.5L407.3 175.1C401.2 171.5 395 171.5 388.9 175.1L260.4 249.8zM488.7 439.2L488.7 323C488.7 315.8 485.6 310.7 479.5 307.1L351 232.4L393 208.3C396.6 206.3 399.7 206.3 403.2 208.3L501 264.7C529.2 281.1 548.1 315.9 548.1 349.7C548.1 388.6 525.1 424.5 488.7 439.3L488.7 439.3zM230.2 336.8L188.2 312.2C184.6 310.2 183.1 307.1 183.1 303L183.1 190.4C183.1 135.6 225.1 94.1 281.9 94.1C303.4 94.1 323.4 101.3 340.3 114.1L239.4 172.5C233.3 176.1 230.2 181.2 230.2 188.4L230.2 336.9L230.2 336.9zM320.6 389L260.4 355.2L260.4 283.5L320.6 249.7L380.8 283.5L380.8 355.2L320.6 389zM359.3 544.7C337.8 544.7 317.8 537.5 300.9 524.7L401.8 466.3C407.9 462.7 411 457.6 411 450.4L411 301.9L453.5 326.5C457.1 328.5 458.6 331.6 458.6 335.7L458.6 448.3C458.6 503.1 416.1 544.6 359.3 544.6L359.3 544.6zM237.8 430.5L140.1 374.2C111.9 357.8 93 323 93 289.2C93 249.8 116.6 214.4 152.9 199.6L152.9 316.3C152.9 323.5 156 328.6 162.1 332.2L290.1 406.4L248.1 430.5C244.5 432.5 241.4 432.5 237.9 430.5zM232.2 514.5C174.3 514.5 131.8 471 131.8 417.2C131.8 413.1 132.3 409 132.8 404.9L233.7 463.3C239.8 466.9 246 466.9 252.1 463.3L380.6 389.1L380.6 437.7C380.6 441.8 379.1 444.9 375.5 446.9L277.7 503.2C264.4 510.9 248.5 514.5 232.1 514.5L232.1 514.5zM359.2 575.4C421.2 575.4 472.9 531.4 484.6 473C541.9 458.1 578.8 404.4 578.8 349.6C578.8 313.8 563.4 278.9 535.8 253.9C538.4 243.1 539.9 232.4 539.9 221.6C539.9 148.4 480.5 93.6 411.9 93.6C398.1 93.6 384.8 95.6 371.5 100.3C348.5 77.8 316.7 63.4 281.9 63.4C219.9 63.4 168.2 107.4 156.5 165.8C99.2 180.6 62.3 234.4 62.3 289.2C62.3 325 77.7 359.9 105.3 384.9C102.7 395.7 101.2 406.4 101.2 417.2C101.2 490.4 160.6 545.2 229.2 545.2C243 545.2 256.3 543.2 269.6 538.5C292.6 561 324.4 575.4 359.2 575.4z"/></g></svg> ChatGPT</span>
             <span class="skill-tag"><i class="fab fa-github"></i> GitHub Copilot</span>
         </div>
     </div>
@@ -783,69 +889,88 @@
         <div class="projects-parallax" id="projects-parallax"></div>
         <h2>Featured Projects</h2>
         <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-image">🚀</div>
-                <div class="project-content">
-                    <h3>Project Title One</h3>
-                    <p>A brief description of your amazing project goes here. Explain what problem it solves and what makes it special.</p>
-                    <div class="project-tags">
-                        <span class="tag">React</span>
-                        <span class="tag">Node.js</span>
-                        <span class="tag">MongoDB</span>
+            <a href="https://apps.apple.com/us/app/lubepm/id1466979011" target="_blank" style="text-decoration: none;">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="lubepm.webp"/>
+                    </div>
+                    <div class="project-content">
+                        <h3>LubePM</h3>
+                        <p>LubePM is the Lubrication Management System for your industrial facility.</p>
+                        <div class="project-tags">
+                            <span class="tag">Dart / Flutter</span>
+                            <span class="tag">C# / .NET Web API</span>                        
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">iOS</span>
+                            <span class="tag">Android</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
 
-            <div class="project-card">
-                <div class="project-image">💡</div>
-                <div class="project-content">
-                    <h3>Project Title Two</h3>
-                    <p>Another exciting project that showcases your skills. Highlight the key features and technologies used.</p>
-                    <div class="project-tags">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">CSS</span>
-                        <span class="tag">API</span>
+            <a href="https://apps.apple.com/us/app/noria-academy/id1437646521" target="_blank" style="text-decoration: none;">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="noria-academy.webp"/>
+                    </div>
+                    <div class="project-content">
+                        <h3>Noria Academy</h3>
+                        <p>Noria's certification exam prep app that extends learning beyond the classroom.</p>
+                        <div class="project-tags">
+                            <span class="tag">Dart / Flutter</span>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">iOS</span>
+                            <span class="tag">Android</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
 
-            <div class="project-card">
-                <div class="project-image">🎨</div>
-                <div class="project-content">
-                    <h3>Project Title Three</h3>
-                    <p>Description of your third project. Talk about the challenges you faced and how you overcame them.</p>
-                    <div class="project-tags">
-                        <span class="tag">Vue.js</span>
-                        <span class="tag">Firebase</span>
-                        <span class="tag">Design</span>
+            <a href="https://apps.apple.com/us/app/reliable-plant-2025/id6451425531" target="_blank" style="text-decoration: none;">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="rp25.webp"/>
+                    </div>
+                    <div class="project-content">
+                        <h3>Reliable Plant 2025</h3>
+                        <p>Noria's guide to the annual Reliable Plant Conference and Exhibition.</p>
+                        <div class="project-tags">
+                            <span class="tag">Dart / Flutter</span>
+                            <span class="tag">Firebase</span>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">iOS</span>
+                            <span class="tag">Android</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
     </section>
 
     <section class="contact reveal" id="contact">
         <div class="contact-parallax" id="contact-parallax"></div>
         <h2>Let's Work Together</h2>
-        <p>Have a project in mind? I'd love to hear about it.</p>
-        <a href="mailto:your.email@example.com" class="cta-button">Get In Touch</a>
+        <p>Have a project in mind? I'd love to hear about it.</p>        
         <div class="social-links">
-            <a href="#" aria-label="GitHub">
+            <a href="https://github.com/sovenpalit" target="_blank" aria-label="GitHub">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
                 </svg>
             </a>
-            <a href="#" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/soven-palit-205b3516" target="_blank" aria-label="LinkedIn">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                 </svg>
             </a>
-            <a href="#" aria-label="Twitter">
+            <!--<a href="#" aria-label="Twitter">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                 </svg>
-            </a>
-            <a href="mailto:your.email@example.com" aria-label="Email">
+            </a>-->
+            <a href="mailto:soven.palit@live.com" aria-label="Email">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                 </svg>
@@ -854,7 +979,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 Your Name. All rights reserved.</p>
+        <p>&copy; 2025 Soven Palit. All rights reserved.</p>
     </footer>
 
     <script>
@@ -987,6 +1112,31 @@
             card.addEventListener('mouseleave', function() {
                 this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)';
             });
+        });
+
+        // Hamburger menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav')) {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
         });
     </script>
 </body>
